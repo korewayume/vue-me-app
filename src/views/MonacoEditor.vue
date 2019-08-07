@@ -8,20 +8,6 @@
   import * as monaco from 'monaco-editor'
   import './hive-language'
 
-  const sql = "WITH ED_COUNT AS\n" +
-    "  (SELECT cast(pt AS BIGINT) pt,\n" +
-    "          count(1) ed_count\n" +
-    "   FROM dw_pdw.dim_ed_info_d\n" +
-    "   GROUP BY pt)\n" +
-    "SELECT a.pt,\n" +
-    "       max(a.ed_count) ed_count,\n" +
-    "       sum(b.ed_count) sum_ed_count\n" +
-    "FROM ED_COUNT a\n" +
-    "CROSS JOIN ED_COUNT b\n" +
-    "WHERE a.pt >= b.pt\n" +
-    "GROUP BY a.pt\n" +
-    "ORDER BY a.pt";
-
   export default {
     name: 'home',
     data() {
@@ -31,7 +17,8 @@
     },
     mounted() {
       this.editor = monaco.editor.create(document.getElementById('monaco'), {
-        value: sql,
+        fontSize: 16,
+        fontFamily: '"Ubunto Mono", Menlo, Monaco, "Courier New", monospace',
         language: 'hive'
       })
     }
