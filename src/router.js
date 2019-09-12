@@ -12,5 +12,10 @@ export default new Router({
       name: 'MonacoEditor',
       component: () => import(/* webpackChunkName: "MonacoEditor" */ './views/MonacoEditor.vue')
     },
+    {
+      path: '/monarch',
+      name: 'Monarch',
+      component: () => import(/* webpackChunkName: "Monarch" */ './views/Monarch')
+    }
   ]
 })
